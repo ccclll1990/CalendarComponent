@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.dsw.calendar.R;
 import com.dsw.calendar.component.GridMonthView;
-import com.dsw.calendar.component.MonthView;
 import com.dsw.calendar.component.WeekView;
 import com.dsw.calendar.entity.CalendarInfo;
+import com.dsw.calendar.interfaces.OnCalendarClickListener;
 import com.dsw.calendar.theme.IDayTheme;
 import com.dsw.calendar.theme.IWeekTheme;
 
@@ -23,12 +23,12 @@ import java.util.List;
 public class GridCalendarView extends LinearLayout implements View.OnClickListener {
     private WeekView weekView;
     private GridMonthView gridMonthView;
-    private TextView textViewYear,textViewMonth;
-    public GridCalendarView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    private TextView textViewYear, textViewMonth;
+
+    public GridCalendarView(Context context,AttributeSet attrs){
+        super(context,attrs);
         setOrientation(LinearLayout.VERTICAL);
-        LayoutParams llParams =
-                new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams llParams = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
         View view = LayoutInflater.from(context).inflate(R.layout.display_grid_date,null);
         weekView = new WeekView(context,null);
         gridMonthView = new GridMonthView(context,null);
@@ -38,29 +38,32 @@ public class GridCalendarView extends LinearLayout implements View.OnClickListen
 
         view.findViewById(R.id.left).setOnClickListener(this);
         view.findViewById(R.id.right).setOnClickListener(this);
-        textViewYear = (TextView) view.findViewById(R.id.year);
-        textViewMonth = (TextView) view.findViewById(R.id.month);
-        gridMonthView.setMonthLisener(new MonthView.IMonthLisener() {
+        textViewYear = (TextView)view.findViewById(R.id.year);
+        textViewMonth = (TextView)view.findViewById(R.id.month);
+
+    }
+
+
+    public void setOnCalendarClickListener(final OnCalendarClickListener calendarClickListener){
+        gridMonthView.setOnCalendarClickListener(new OnCalendarClickListener() {
             @Override
-            public void setTextMonth() {
-                textViewYear.setText(gridMonthView.getSelYear()+"年");
-                textViewMonth.setText((gridMonthView.getSelMonth() + 1)+"月");
+            public void onDayChange(int year,int month,int day){
+                calendarClickListener.onDayChange(year,month,day);
+            }
+
+            @Override
+            public void onMonthClick(boolean isLeft,int year,int month){
+                calendarClickListener.onMonthClick(isLeft,year,month);
+                textViewYear.setText(year + "年");
+                textViewMonth.setText(month + "月");
             }
         });
     }
 
     /**
-     * 设置日历点击事件
-     * @param dateClick
-     */
-    public void setDateClick(MonthView.IDateClick dateClick){
-        gridMonthView.setDateClick(dateClick);
-    }
-
-    /**
      * 设置星期的形式
-     * @param weekString
-     * 默认值	"日","一","二","三","四","五","六"
+     *
+     * @param weekString 默认值	"日","一","二","三","四","五","六"
      */
     public void setWeekString(String[] weekString){
         weekView.setWeekString(weekString);
@@ -68,8 +71,8 @@ public class GridCalendarView extends LinearLayout implements View.OnClickListen
 
     public void setCalendarInfos(List<CalendarInfo> calendarInfos){
         gridMonthView.setCalendarInfos(calendarInfos);
-        textViewYear.setText(gridMonthView.getSelYear()+"年");
-        textViewMonth.setText((gridMonthView.getSelMonth() + 1)+"月");
+        textViewYear.setText(gridMonthView.getSelYear() + "年");
+        textViewMonth.setText((gridMonthView.getSelMonth() + 1) + "月");
     }
 
     public void setDayTheme(IDayTheme theme){
@@ -81,11 +84,11 @@ public class GridCalendarView extends LinearLayout implements View.OnClickListen
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v){
         int id = v.getId();
-        if(id == R.id.left){
+        if (id == R.id.left) {
             gridMonthView.onLeftClick();
-        }else{
+        } else if (id == R.id.right) {
             gridMonthView.onRightClick();
         }
     }
