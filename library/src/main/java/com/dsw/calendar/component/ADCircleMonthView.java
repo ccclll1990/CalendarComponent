@@ -140,6 +140,7 @@ public class ADCircleMonthView extends MonthView {
                 canvas.drawText(day+"", startX, startY, paint);
             }
         }
+
     }
 
     @Override
