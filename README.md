@@ -1,39 +1,26 @@
 # 日历组件
 
->日历组件（CalendarComponent）库的来源是[CalendarView](https://github.com/dengshiwei/CalendarView)。该控件的来由在[Android自定义控件之日历控件](http://blog.csdn.net/mr_dsw/article/details/48755993)中有介绍。CalendarView称不上一个组件，仅仅只是一个自定义的View，根据当时的项目定制需求进行开发，由于在平时也遇到了多种的日历样式，所以萌生了对日历控件进行重构的项目，所以诞生了这个库。
+>原介绍
+>>日历组件（CalendarComponent）库的来源是[CalendarView](https://github.com/dengshiwei/CalendarView)。该控件的来由在[Android自定义控件之日历控件](http://blog.csdn.net/mr_dsw/article/details/48755993)中有介绍。CalendarView称不上一个组件，仅仅只是一个自定义的View，根据当时的项目定制需求进行开发，由于在平时也遇到了多种的日历样式，所以萌生了对日历控件进行重构的项目，所以诞生了这个库。
+>后因业务需要,增加了统一的月份和日期回调方法
 
-## 版本迭代
+## 原版本迭代
 ##### 1.0.0 release
 * 支持月份日期界面的样式自定制。
 * 支持星期的界面样式定制。
 * 支持日历事务的显示。
 * 支持班、休标志的绘制。
 * 支持左右滑动进行月份的切换。
-
-##### 1.0.1 release
 * 新增CircleCalendarView圆形日历样式。
-
-##### 1.0.2 release
 * 新增ADCircleCalendarView日历样式。
 * 新增平滑模式
-
-##### 1.0.3 release
 * 修复滑动时左右两边月份显示事务的bug。
 * 修复月末滑动处理显示的bug。
 
 ## 项目集成
 ##### 方式一、Gradle直接引用项目library类库。
 
-	compile 'com.dsw.calendar:library:1.0.0'
-
-##### 方式二、Maven引用方式
-
-	<dependency>
-      <groupId>com.dsw.calendar</groupId>
-      <artifactId>library</artifactId>
-      <version>1.0.0</version>
-      <type>pom</type>
-    </dependency>
+	compile 'com.github.ccclll1990:CalendarComponent:1.0.3'
 
 ## 简单使用
 
