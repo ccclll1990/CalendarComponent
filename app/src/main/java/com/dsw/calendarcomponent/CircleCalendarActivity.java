@@ -2,14 +2,12 @@ package com.dsw.calendarcomponent;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
-import com.dsw.calendar.component.CircleMonthView;
-import com.dsw.calendar.component.MonthView;
 import com.dsw.calendar.entity.CalendarInfo;
-import com.dsw.calendar.utils.DateUtils;
+import com.dsw.calendar.interfaces.OnCalendarClickListener;
 import com.dsw.calendar.views.CircleCalendarView;
-import com.dsw.calendar.views.GridCalendarView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,8 +15,9 @@ import java.util.List;
 
 public class CircleCalendarActivity extends Activity {
     private CircleCalendarView circleCalendarView;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle_calendar_view);
         Calendar calendar = Calendar.getInstance();
@@ -34,13 +33,21 @@ public class CircleCalendarActivity extends Activity {
         list.add(new CalendarInfo(currYear,currMonth,11,"￥1200",1));
         list.add(new CalendarInfo(currYear,currMonth,19,"￥1200",2));
         list.add(new CalendarInfo(currYear,currMonth,21,"￥1200",1));
-        circleCalendarView = (CircleCalendarView) findViewById(R.id.circleMonthView);
+        circleCalendarView = (CircleCalendarView)findViewById(R.id.circleMonthView);
         circleCalendarView.setCalendarInfos(list);
-        circleCalendarView.setDateClick(new MonthView.IDateClick(){
+        circleCalendarView.setOnCalendarClickListener(new OnCalendarClickListener() {
+            @Override
+            public void onDayChange(int year,int month,int day){
+                Toast.makeText(CircleCalendarActivity.this,"点击了" + year + "-" + month + "-" + day,Toast.LENGTH_SHORT).show();
+                Log.e("TAG","点击了" + year + "-" + month + "-" + day);
+            }
 
             @Override
-            public void onClickOnDate(int year, int month, int day) {
-                Toast.makeText(CircleCalendarActivity.this,"点击了" +  year + "-" + month + "-" + day,Toast.LENGTH_SHORT).show();
+            public void onMonthClick(boolean isLeft,int year,int month){
+                Toast.makeText(CircleCalendarActivity.this,(isLeft ? "上月" : "下月") + ", 现在月份 " + year + "-" + month,Toast.LENGTH_SHORT).show();
+
+                Log.e("TAG",(isLeft ? "上月" : "下月") + ", 现在月份 " + year + "-" + month);
+
             }
         });
     }

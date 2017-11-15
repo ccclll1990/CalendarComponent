@@ -8,26 +8,24 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.dsw.calendar.views.ADCircleCalendarView;
-import com.dsw.calendar.views.CirclePointCalendarView;
-
 public class MainActivity extends Activity {
     private ListView listView;
     private String[] items = new String[]{"GridCalendarView","CircleCalendarView","ADCircleCalendarView",
-    "CirclePointMonthView"};
+            "CirclePointMonthView"};
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = (ListView) findViewById(R.id.listView);
+        listView = (ListView)findViewById(R.id.listView);
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
                 android.R.id.text1,items);
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent,View view,int position,long id){
                 Intent intent = null;
-                switch (position){
+                switch (position) {
                     case 0:
                         intent = new Intent(MainActivity.this,GridCalendarActivity.class);
                         break;
@@ -35,16 +33,16 @@ public class MainActivity extends Activity {
                         intent = new Intent(MainActivity.this,CircleCalendarActivity.class);
                         break;
                     case 2:
-                        intent = new Intent(MainActivity.this, ADCircleCalendarActivity.class);
+                        intent = new Intent(MainActivity.this,ADCircleCalendarActivity.class);
                         break;
                     case 3:
-                        intent = new Intent(MainActivity.this, CirclePointCalendarActivity.class);
+                        intent = new Intent(MainActivity.this,CirclePointCalendarActivity.class);
                         break;
                     default:
                         break;
                 }
-                if(null != intent)
-                startActivity(intent);
+                if (null != intent)
+                    startActivity(intent);
             }
         });
     }
