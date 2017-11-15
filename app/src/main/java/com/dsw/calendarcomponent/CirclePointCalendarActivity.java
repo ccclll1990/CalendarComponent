@@ -43,7 +43,7 @@ public class CirclePointCalendarActivity extends Activity {
             }
 
             @Override
-            public void onMonthClick(boolean isLeft,int year,int month){
+            public void onMonthChange(boolean isLeft,int year,int month){
                 Toast.makeText(CirclePointCalendarActivity.this,(isLeft ? "上月" : "下月") + ", 现在月份 " + year + "-" + month,Toast.LENGTH_SHORT).show();
 
                 Log.e("TAG",(isLeft ? "上月" : "下月") + ", 现在月份 " + year + "-" + month);

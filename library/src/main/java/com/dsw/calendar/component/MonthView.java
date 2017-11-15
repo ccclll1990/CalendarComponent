@@ -333,7 +333,7 @@ public abstract class MonthView extends View {
         }
 
         if (calendarClickListener != null) {
-            calendarClickListener.onMonthClick(isLeft,selYear,selMonth + 1);
+            calendarClickListener.onMonthChange(isLeft,selYear,selMonth + 1);
         }
 
 

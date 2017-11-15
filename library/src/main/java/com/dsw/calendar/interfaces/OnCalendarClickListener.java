@@ -11,7 +11,7 @@ public interface OnCalendarClickListener {
 
     void onDayChange(int year,int month,int day);
 
-    void onMonthClick(boolean isLeft,int year,int month);
+    void onMonthChange(boolean isLeft,int year,int month);
 
 
 }

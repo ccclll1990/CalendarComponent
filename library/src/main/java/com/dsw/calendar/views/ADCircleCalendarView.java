@@ -53,10 +53,10 @@ public class ADCircleCalendarView extends LinearLayout implements View.OnClickLi
             }
 
             @Override
-            public void onMonthClick(boolean isLeft,int year,int month){
+            public void onMonthChange(boolean isLeft,int year,int month){
                 textViewYear.setText(year + "年");
                 textViewMonth.setText(month + "月");
-                calendarClickListener.onMonthClick(isLeft,year,month);
+                calendarClickListener.onMonthChange(isLeft,year,month);
             }
         });
     }
