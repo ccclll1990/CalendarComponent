@@ -34,7 +34,7 @@ public class ADCircleDayTheme implements IDayTheme {
 
     @Override
     public int colorWeekday(int day){
-        return 0;
+        return Color.parseColor("#4F4F4F");
     }
 
     @Override

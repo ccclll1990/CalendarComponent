@@ -75,11 +75,6 @@ public class GridCalendarView extends LinearLayout implements View.OnClickListen
         textViewMonth.setText((gridMonthView.getSelMonth() + 1) + "月");
     }
 
-    public GridMonthView getGridMonthView(){
-        return gridMonthView;
-    }
-
-
     public void setDayTheme(IDayTheme theme){
         gridMonthView.setTheme(theme);
     }

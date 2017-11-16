@@ -7,87 +7,87 @@ import android.graphics.Color;
  */
 public class DefaultDayTheme implements IDayTheme {
     @Override
-    public int colorSelectBG() {
+    public int colorSelectBG(){
         return Color.parseColor("#13A4D3");
     }
 
     @Override
-    public int colorSelectDay() {
+    public int colorSelectDay(){
         return Color.parseColor("#FFFFFF");
     }
 
     @Override
-    public int colorToday() {
+    public int colorToday(){
         return Color.parseColor("#68CB00");
     }
 
     @Override
-    public int colorMonthView() {
+    public int colorMonthView(){
         return Color.parseColor("#FFFFFF");
     }
 
     @Override
-    public int colorWeekday() {
+    public int colorWeekday(){
         return Color.parseColor("#404040");
     }
 
     @Override
     public int colorWeekday(int day){
-        return 0;
-    }
-
-    @Override
-    public int colorWeekend() {
         return Color.parseColor("#404040");
     }
 
     @Override
-    public int colorDecor() {
+    public int colorWeekend(){
+        return Color.parseColor("#404040");
+    }
+
+    @Override
+    public int colorDecor(){
         return Color.parseColor("#68CB00");
     }
 
     @Override
-    public int colorRest() {
+    public int colorRest(){
         return Color.parseColor("#68CB00");
     }
 
     @Override
-    public int colorWork() {
+    public int colorWork(){
         return Color.parseColor("#FF9B12");
     }
 
     @Override
-    public int colorDesc() {
+    public int colorDesc(){
         return Color.parseColor("#FF9B12");
     }
 
     @Override
-    public int sizeDay() {
+    public int sizeDay(){
         return 30;
     }
 
     @Override
-    public int sizeDecor() {
+    public int sizeDecor(){
         return 6;
     }
 
     @Override
-    public int sizeDesc() {
+    public int sizeDesc(){
         return 15;
     }
 
     @Override
-    public int dateHeight() {
+    public int dateHeight(){
         return 70;
     }
 
     @Override
-    public int colorLine() {
+    public int colorLine(){
         return Color.parseColor("#CBCBCB");
     }
 
     @Override
-    public int smoothMode() {
+    public int smoothMode(){
         return 0;
     }
 }

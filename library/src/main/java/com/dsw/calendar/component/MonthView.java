@@ -119,20 +119,20 @@ public abstract class MonthView extends View {
      *
      * @param canvas
      */
-    protected abstract void drawLines(Canvas canvas,int rowsCount);
+    public abstract void drawLines(Canvas canvas,int rowsCount);
 
-    protected abstract void drawBG(Canvas canvas,int column,int row,int day);
+    public abstract void drawBG(Canvas canvas,int column,int row,int day);
 
-    protected abstract void drawDecor(Canvas canvas,int column,int row,int year,int month,int day);
+    public abstract void drawDecor(Canvas canvas,int column,int row,int year,int month,int day);
 
-    protected abstract void drawRest(Canvas canvas,int column,int row,int year,int month,int day);
+    public abstract void drawRest(Canvas canvas,int column,int row,int year,int month,int day);
 
-    protected abstract void drawText(Canvas canvas,int column,int row,int year,int month,int day);
+    public abstract void drawText(Canvas canvas,int column,int row,int year,int month,int day);
 
     /**
      * 实例化Theme
      */
-    protected abstract void createTheme();
+    public abstract void createTheme();
 
     private int lastMoveX;
 

@@ -20,7 +20,7 @@ public class GridMonthView extends MonthView {
     }
 
     @Override
-    protected void drawLines(Canvas canvas,int rowsCount){
+    public void drawLines(Canvas canvas,int rowsCount){
         int rightX = getWidth();
         int BottomY = getHeight();
         int rowCount = rowsCount;
@@ -51,7 +51,7 @@ public class GridMonthView extends MonthView {
     }
 
     @Override
-    protected void drawBG(Canvas canvas,int column,int row,int day){
+    public void drawBG(Canvas canvas,int column,int row,int day){
         if (day == selDay) {
             //绘制背景色矩形
             float startRecX = columnSize * column + 1;
@@ -65,7 +65,7 @@ public class GridMonthView extends MonthView {
     }
 
     @Override
-    protected void drawDecor(Canvas canvas,int column,int row,int year,int month,int day){
+    public void drawDecor(Canvas canvas,int column,int row,int year,int month,int day){
         if (calendarInfos != null && calendarInfos.size() > 0) {
             if (TextUtils.isEmpty(iscalendarInfo(year,month,day))) return;
             paint.setColor(theme.colorDecor());
@@ -77,7 +77,7 @@ public class GridMonthView extends MonthView {
     }
 
     @Override
-    protected void drawRest(Canvas canvas,int column,int row,int year,int month,int day){
+    public void drawRest(Canvas canvas,int column,int row,int year,int month,int day){
         if (calendarInfos != null && calendarInfos.size() > 0) {
             Path path = new Path();
             for (CalendarInfo calendarInfo : calendarInfos) {
@@ -115,7 +115,7 @@ public class GridMonthView extends MonthView {
     }
 
     @Override
-    protected void drawText(Canvas canvas,int column,int row,int year,int month,int day){
+    public void drawText(Canvas canvas,int column,int row,int year,int month,int day){
         paint.setTextSize(theme.sizeDay());
         float startX = columnSize * column + (columnSize - paint.measureText(day + "")) / 2;
         float startY = rowSize * row + rowSize / 2 - (paint.ascent() + paint.descent()) / 2;
@@ -152,7 +152,7 @@ public class GridMonthView extends MonthView {
             // desc不为空
             if (!TextUtils.isEmpty(des)) {
                 int dateY = (int)(startY - 10);
-                paint.setColor(theme.colorWeekday());
+                paint.setColor(theme.colorWeekday(day));
                 canvas.drawText(day + "",startX,dateY,paint);
 
                 paint.setTextSize(theme.sizeDesc());
@@ -162,14 +162,14 @@ public class GridMonthView extends MonthView {
                 canvas.drawText(des,priceX,priceY,paint);
             } else {
                 //des为空
-                paint.setColor(theme.colorWeekday());
+                paint.setColor(theme.colorWeekday(day));
                 canvas.drawText(day + "",startX,startY,paint);
             }
         }
     }
 
     @Override
-    protected void createTheme(){
+    public void createTheme(){
         theme = new DefaultDayTheme();
     }
 }

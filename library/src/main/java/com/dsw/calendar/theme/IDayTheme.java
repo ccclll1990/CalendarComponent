@@ -40,7 +40,7 @@ public interface IDayTheme {
     int colorWeekday();
 
     /**
-     * 工作日的颜色
+     * 某日的颜色
      *
      * @return
      */
