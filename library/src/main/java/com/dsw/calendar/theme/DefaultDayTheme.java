@@ -32,6 +32,11 @@ public class DefaultDayTheme implements IDayTheme {
     }
 
     @Override
+    public int colorWeekday(int day){
+        return 0;
+    }
+
+    @Override
     public int colorWeekend() {
         return Color.parseColor("#404040");
     }

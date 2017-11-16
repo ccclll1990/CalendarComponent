@@ -1,9 +1,12 @@
 package com.dsw.calendar.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Administrator on 2016/7/30.
  */
-public class CalendarInfo {
+public class CalendarInfo implements Parcelable {
 
     /**
      * 年
@@ -25,6 +28,9 @@ public class CalendarInfo {
      * 是否为休、班。。1为休，2为班，默认为普通日期
      */
     public int rest;
+
+
+    public int state;
 
     public CalendarInfo(){
 
@@ -61,4 +67,100 @@ public class CalendarInfo {
         this.des = des;
         this.rest = rest;
     }
+
+    public int getYear(){
+        return year;
+    }
+
+    public void setYear(int year){
+        this.year = year;
+    }
+
+    public int getMonth(){
+        return month;
+    }
+
+    public void setMonth(int month){
+        this.month = month;
+    }
+
+    public int getDay(){
+        return day;
+    }
+
+    public void setDay(int day){
+        this.day = day;
+    }
+
+    public String getDes(){
+        return des;
+    }
+
+    public void setDes(String des){
+        this.des = des;
+    }
+
+    public int getRest(){
+        return rest;
+    }
+
+    public void setRest(int rest){
+        this.rest = rest;
+    }
+
+    public int getState(){
+        return state;
+    }
+
+    public void setState(int state){
+        this.state = state;
+    }
+
+    @Override
+    public String toString(){
+        return "CalendarInfo{" +
+                "year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                ", des='" + des + '\'' +
+                ", rest=" + rest +
+                ", state=" + state +
+                '}';
+    }
+
+    @Override
+    public int describeContents(){
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest,int flags){
+        dest.writeInt(this.year);
+        dest.writeInt(this.month);
+        dest.writeInt(this.day);
+        dest.writeString(this.des);
+        dest.writeInt(this.rest);
+        dest.writeInt(this.state);
+    }
+
+    protected CalendarInfo(Parcel in){
+        this.year = in.readInt();
+        this.month = in.readInt();
+        this.day = in.readInt();
+        this.des = in.readString();
+        this.rest = in.readInt();
+        this.state = in.readInt();
+    }
+
+    public static final Parcelable.Creator<CalendarInfo> CREATOR = new Parcelable.Creator<CalendarInfo>() {
+        @Override
+        public CalendarInfo createFromParcel(Parcel source){
+            return new CalendarInfo(source);
+        }
+
+        @Override
+        public CalendarInfo[] newArray(int size){
+            return new CalendarInfo[size];
+        }
+    };
 }
