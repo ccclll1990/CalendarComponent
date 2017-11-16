@@ -22,14 +22,14 @@
 ## 项目集成
 ##### 1、Gradle
 
-	compile 'com.github.ccclll1990:CalendarComponent:1.0.7'
+	compile 'com.github.ccclll1990:CalendarComponent:1.0.8'
 
 
 ##### 2、Maven
     <dependency>
         <groupId>com.github.ccclll1990</groupId>
         <artifactId>CalendarComponent</artifactId>
-        <version>1.0.7</version>
+        <version>1.0.8</version>
     </dependency>
 
 ## 简单使用
