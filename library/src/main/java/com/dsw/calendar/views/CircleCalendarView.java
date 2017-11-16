@@ -53,10 +53,10 @@ public class CircleCalendarView extends LinearLayout implements View.OnClickList
             }
 
             @Override
-            public void onMonthChange(boolean isLeft,int year,int month){
+            public void onMonthChange(boolean isPreMonth,int year,int month){
                 textViewYear.setText(year + "年");
                 textViewMonth.setText(month + "月");
-                calendarClickListener.onMonthChange(isLeft,year,month);
+                calendarClickListener.onMonthChange(isPreMonth,year,month);
             }
         });
     }

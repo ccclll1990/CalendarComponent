@@ -52,8 +52,8 @@ public class GridCalendarView extends LinearLayout implements View.OnClickListen
             }
 
             @Override
-            public void onMonthChange(boolean isLeft,int year,int month){
-                calendarClickListener.onMonthChange(isLeft,year,month);
+            public void onMonthChange(boolean isPreMonth,int year,int month){
+                calendarClickListener.onMonthChange(isPreMonth,year,month);
                 textViewYear.setText(year + "年");
                 textViewMonth.setText(month + "月");
             }

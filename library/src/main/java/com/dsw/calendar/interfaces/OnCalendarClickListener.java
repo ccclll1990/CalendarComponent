@@ -9,9 +9,19 @@ package com.dsw.calendar.interfaces;
  */
 public interface OnCalendarClickListener {
 
+    /**
+     * @param year  年
+     * @param month 月
+     * @param day   日
+     */
     void onDayChange(int year,int month,int day);
 
-    void onMonthChange(boolean isLeft,int year,int month);
+    /**
+     * @param isPreMonth 是否为上个月
+     * @param year       年
+     * @param month      月
+     */
+    void onMonthChange(boolean isPreMonth,int year,int month);
 
 
 }

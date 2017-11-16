@@ -43,10 +43,10 @@ public class CircleCalendarActivity extends Activity {
             }
 
             @Override
-            public void onMonthChange(boolean isLeft,int year,int month){
-                Toast.makeText(CircleCalendarActivity.this,(isLeft ? "上月" : "下月") + ", 现在月份 " + year + "-" + month,Toast.LENGTH_SHORT).show();
+            public void onMonthChange(boolean isPreMonth,int year,int month){
+                Toast.makeText(CircleCalendarActivity.this,(isPreMonth ? "上月" : "下月") + ", 现在月份 " + year + "-" + month,Toast.LENGTH_SHORT).show();
 
-                Log.e("TAG",(isLeft ? "上月" : "下月") + ", 现在月份 " + year + "-" + month);
+                Log.e("TAG",(isPreMonth ? "上月" : "下月") + ", 现在月份 " + year + "-" + month);
 
             }
         });
