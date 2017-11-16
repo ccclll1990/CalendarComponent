@@ -7,7 +7,6 @@ import android.graphics.Path;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
-import com.dsw.calendar.entity.CalendarInfo;
 import com.dsw.calendar.theme.ADCircleDayTheme;
 
 /**
@@ -20,7 +19,7 @@ public class CirclePointMonthView extends MonthView {
     }
 
     @Override
-    protected void drawLines(Canvas canvas, int rowsCount) {
+    public void drawLines(Canvas canvas, int rowsCount) {
         int rightX = getWidth();
         Path path;
         float startX = 0;
@@ -37,7 +36,7 @@ public class CirclePointMonthView extends MonthView {
     }
 
     @Override
-    protected void drawBG(Canvas canvas, int column, int row, int day) {
+    public void drawBG(Canvas canvas, int column, int row, int day) {
         float startRecX = columnSize * column + 1;
         float startRecY = rowSize * row +1;
         float endRecX = startRecX + columnSize - 2 * 1;
@@ -57,7 +56,7 @@ public class CirclePointMonthView extends MonthView {
     }
 
     @Override
-    protected void drawDecor(Canvas canvas, int column, int row, int year,int month,int day) {
+    public void drawDecor(Canvas canvas, int column, int row, int year,int month,int day) {
         if(calendarInfos != null && calendarInfos.size() >0){
             if(TextUtils.isEmpty(iscalendarInfo(year,month,day)))return;
             paint.setColor(theme.colorDecor());
@@ -69,12 +68,12 @@ public class CirclePointMonthView extends MonthView {
     }
 
     @Override
-    protected void drawRest(Canvas canvas, int column, int row, int year,int month,int day) {
+    public void drawRest(Canvas canvas, int column, int row, int year,int month,int day) {
 
     }
 
     @Override
-    protected void drawText(Canvas canvas, int column, int row, int year,int month,int day) {
+    public void drawText(Canvas canvas, int column, int row, int year,int month,int day) {
         paint.setTextSize(theme.sizeDay());
         paint.setStyle(Paint.Style.STROKE);
         float startX = columnSize * column + (columnSize - paint.measureText(day+""))/2;
@@ -122,7 +121,7 @@ public class CirclePointMonthView extends MonthView {
     }
 
     @Override
-    protected void createTheme() {
+    public void createTheme() {
         theme = new ADCircleDayTheme();
     }
 }
