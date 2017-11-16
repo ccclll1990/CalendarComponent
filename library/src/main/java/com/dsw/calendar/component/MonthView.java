@@ -255,7 +255,7 @@ public abstract class MonthView extends View {
         setSelectDate(selYear,selMonth,daysString[row][column]);
         invalidate();
         //执行activity发送过来的点击处理事件
-        if (calendarClickListener != null) {
+        if (calendarClickListener != null && selDay != 0) {
             calendarClickListener.onDayChange(selYear,selMonth + 1,selDay);
         }
     }
@@ -266,7 +266,6 @@ public abstract class MonthView extends View {
     public void onLeftClick(){
         setLeftDate();
         invalidate();
-
     }
 
     /**
@@ -275,7 +274,6 @@ public abstract class MonthView extends View {
     public void onRightClick(){
         setRightDate();
         invalidate();
-
     }
 
     private void setLeftDate(){
@@ -335,14 +333,11 @@ public abstract class MonthView extends View {
         if (calendarClickListener != null) {
             calendarClickListener.onMonthChange(isLeft,selYear,selMonth + 1);
         }
-
-
     }
 
     public void setOnCalendarClickListener(OnCalendarClickListener calendarClickListener){
         this.calendarClickListener = calendarClickListener;
     }
-
 
     /**
      * 设置样式

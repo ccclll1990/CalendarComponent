@@ -149,15 +149,14 @@ public class GridMonthView extends MonthView {
 
         } else {
             //没选中
-
             // desc不为空
             if (!TextUtils.isEmpty(des)) {
                 int dateY = (int)(startY - 10);
-                paint.setColor(theme.colorWeekday(day));
+                paint.setColor(theme.colorWeekday(day) == 0 ? theme.colorWeekday() : theme.colorWeekday(day));
                 canvas.drawText(day + "",startX,dateY,paint);
 
                 paint.setTextSize(theme.sizeDesc());
-                paint.setColor(theme.colorWeekday(day));
+                paint.setColor(theme.colorDesc(day) == 0 ? theme.colorDesc() : theme.colorDesc(day));
 //                paint.setColor(theme.colorDesc());
                 int priceX = (int)(columnSize * column + Math.abs((columnSize - paint.measureText(des)) / 2));
                 int priceY = (int)(startY + 15);

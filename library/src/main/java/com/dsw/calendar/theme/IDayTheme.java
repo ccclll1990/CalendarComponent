@@ -4,6 +4,7 @@ package com.dsw.calendar.theme;
  * Created by Administrator on 2016/7/30.
  */
 public interface IDayTheme {
+
     /**
      * 选中日期的背景色
      *
@@ -80,6 +81,13 @@ public interface IDayTheme {
      * @return 16进制颜色值 hex color
      */
     int colorDesc();
+
+    /**
+     * 某日描述文字颜色
+     *
+     * @return
+     */
+    int colorDesc(int day);
 
     /**
      * 日期大小
