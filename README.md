@@ -1,9 +1,10 @@
 # 日历组件
 
->原介绍
->>日历组件（CalendarComponent）库的来源是[CalendarView](https://github.com/dengshiwei/CalendarView)。该控件的来由在[Android自定义控件之日历控件](http://blog.csdn.net/mr_dsw/article/details/48755993)中有介绍。CalendarView称不上一个组件，仅仅只是一个自定义的View，根据当时的项目定制需求进行开发，由于在平时也遇到了多种的日历样式，所以萌生了对日历控件进行重构的项目，所以诞生了这个库。
+>原介绍:
+日历组件（CalendarComponent）库的来源是[CalendarView](https://github.com/dengshiwei/CalendarView)。该控件的来由在[Android自定义控件之日历控件](http://blog.csdn.net/mr_dsw/article/details/48755993)中有介绍。CalendarView称不上一个组件，仅仅只是一个自定义的View，根据当时的项目定制需求进行开发，由于在平时也遇到了多种的日历样式，所以萌生了对日历控件进行重构的项目，所以诞生了这个库。
 
->后因业务需要,增加了统一的月份和日期回调方法
+>
+>后因业务需要,修改了统一的月份和日期回调方法等..
 
 ## 原版本迭代
 ##### 1.0.0 release
@@ -19,9 +20,17 @@
 * 修复月末滑动处理显示的bug。
 
 ## 项目集成
-##### 方式一、Gradle直接引用项目library类库。
+##### 1、Gradle
 
-	compile 'com.github.ccclll1990:CalendarComponent:1.0.3'
+	compile 'com.github.ccclll1990:CalendarComponent:1.0.7'
+
+
+##### 2、Maven
+    <dependency>
+        <groupId>com.github.ccclll1990</groupId>
+        <artifactId>CalendarComponent</artifactId>
+        <version>1.0.7</version>
+    </dependency>
 
 ## 简单使用
 
@@ -32,6 +41,7 @@
 * colorToday：今天日期颜色
 * colorMonthView：日历的整个背景色
 * colorWeekday：工作日的颜色
+* colorWeekday(int day)：不同工作日的颜色
 * colorWeekend：周末的颜色
 * colorDecor：事务装饰颜色
 * colorRest：假日颜色
@@ -63,13 +73,22 @@
 当在你的项目中引入了CalendarComponent库后，你就可以像使用普通控件一样使用库中的日历控件。GridCalendarView是一个绘制有格网线的日历控件，支持日历的左右滑动以及手动翻页，支持日历的事务的显示、以及用户定制日历的主题样式。具体使用如下：
 
 	 GridCalendarView gridCalendarView = (GridCalendarView) findViewById(R.id.gridMonthView);
-     gridCalendarView.setDateClick(new MonthView.IDateClick(){
+     gridCalendarView.setOnCalendarClickListener(new OnCalendarClickListener() {
+        @Override
+        public void onDayChange(int year,int month,int day){
 
-            @Override
-            public void onClickOnDate(int year, int month, int day) {
-                Toast.makeText(MainActivity.this,"点击了" +  year + "-" + month + "-" + day,Toast.LENGTH_SHORT).show();
-            }
-        });
+            Toast.makeText(GridCalendarActivity.this,"点击了" + year + "-" + month + "-" + day,Toast.LENGTH_SHORT).show();
+            Log.e(TAG,"点击了" + year + "-" + month + "-" + day);
+        }
+
+        @Override
+        public void onMonthChange(boolean isLeft,int year,int month){
+            Toast.makeText(GridCalendarActivity.this,(isLeft ? "上月" : "下月") + ", 现在月份 " + year + "-" + month,Toast.LENGTH_SHORT).show();
+
+            Log.e(TAG,(isLeft ? "上月" : "下月") + ", 现在月份 " + year + "-" + month);
+
+        }
+     });
 
 这是GridCalendarView的简单使用，我们可以获取单击选择的日期。同时我们也可以支持事务，事务的处理，我们通过CalendarInfo类进行表示。如下：
 
