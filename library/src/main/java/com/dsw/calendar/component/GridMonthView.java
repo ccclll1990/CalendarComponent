@@ -142,7 +142,7 @@ public class GridMonthView extends MonthView {
             canvas.drawText(day + "",startX,dateY,paint);
 
             paint.setTextSize(theme.sizeDesc());
-            paint.setColor(theme.colorDesc());
+            paint.setColor(theme.colorDesc(day) == 0 ? theme.colorDesc() : theme.colorDesc(day));
             int priceX = (int)(columnSize * column + Math.abs((columnSize - paint.measureText(des)) / 2));
             int priceY = (int)(startY + 15);
             canvas.drawText(des,priceX,priceY,paint);

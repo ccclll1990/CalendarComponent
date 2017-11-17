@@ -43,7 +43,6 @@ public class GridCalendarView extends LinearLayout implements View.OnClickListen
 
     }
 
-
     public void setOnCalendarClickListener(final OnCalendarClickListener calendarClickListener){
         gridMonthView.setOnCalendarClickListener(new OnCalendarClickListener() {
             @Override
