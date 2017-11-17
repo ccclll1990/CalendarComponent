@@ -37,7 +37,7 @@ public class CircleMonthView extends MonthView {
 
     @Override
     public void drawBG(Canvas canvas, int column, int row, int day) {
-        if(day == selDay){
+//        if(day == selDay){
             //绘制背景色矩形
             float startRecX = columnSize * column + 1;
             float startRecY = rowSize * row +1;
@@ -46,10 +46,11 @@ public class CircleMonthView extends MonthView {
             float cx = (startRecX + endRecX) / 2;
             float cy = (startRecY + endRecY) / 2;
             float radius = columnSize < rowSize ? columnSize / 2 : rowSize / 2;
-            paint.setColor(theme.colorSelectBG());
+            paint.setColor(theme.colorWeekday(day) == 0 ? theme.colorWeekday() : theme.colorWeekday(day));
+//            paint.setColor(theme.colorSelectBG());
             paint.setStyle(Paint.Style.FILL);
             canvas.drawCircle(cx,cy,radius,paint);
-        }
+//        }
     }
 
     @Override
@@ -94,6 +95,9 @@ public class CircleMonthView extends MonthView {
             //正常月，选中其他日期，则今日为红色
             paint.setColor(theme.colorToday());
             canvas.drawText(day+"", startX, startY, paint);
+
+
+
         }else{
             if(!TextUtils.isEmpty(des)){//没选中，但是desc不为空
                 int dateY = (int) (startY - 10);
